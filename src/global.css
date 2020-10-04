@@ -1,0 +1,21 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+    color: rgb(73, 72, 72);
+}
+
+.ml-8{
+    margin-left: 8px;
+}
+
+.ml-16{
+    margin-left: 16px;
+}
+
+.ml-24{
+    margin-left: 24px;
+}
