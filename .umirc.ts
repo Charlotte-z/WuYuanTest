@@ -7,11 +7,14 @@ export default defineConfig({
   },
   routes: [
     { path: '/', component: '@/pages/index' },
-    { path: '/test', component: '@/pages/test' },
   ],
   // dynamicImport:{},
   // ssr:{
   //   devServerRender: false,
   // },
+  dva:{
+    immer: true,
+    hmr:true
+  },
   extraPostCSSPlugins:[ px2rem({viewportWidth: 7})]
 });

@@ -13,8 +13,9 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import styles from './nav.less'
+import { connect } from 'umi';
 
-import { request } from 'umi'
+
 
 const { Component } = React
 
@@ -52,18 +53,19 @@ class APP extends Component{
 
       const term = this.isChinese(value) ? window.encodeURI(value) : value // 查询字段前置操作
 
-      if(value){
-        request(`https://s.search.bilibili.com/main/suggest?func=suggest&suggest_type=accurate&sub_type=tag&main_ver=v1&highlight=&userid=23988726&bangumi_acc_num=1&special_acc_num=1&topic_acc_num=1&upuser_acc_num=3&tag_num=10&special_num=10&bangumi_num=10&upuser_num=3&term=${term}&rnd=0.16522722804949241`).then(res => {
-          if(res.code === 0) this.setState({tag: res?.result?.tag ?? []})
-        })
-      }else{
-        this.setState({tag:[]})
-      }
+      const { dispatch } = this.props
+      
+      dispatch({
+        type:'SearchListModel/getSearchList',
+        payload:{term}
+      })
     }
     
 
     render(){
-      const { tag } = this.state
+      // const { tag } = this.state
+      const { tag } = this.props.SearchListModel.list
+      
         return(
           // nav
           <Grid container className={styles.nav}>
@@ -105,4 +107,6 @@ class APP extends Component{
     }
 }
 
-export default APP
+export default connect(({SearchListModel}) => {
+  return {SearchListModel}
+})(APP)
