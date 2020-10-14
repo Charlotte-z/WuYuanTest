@@ -2,6 +2,7 @@ import { defineConfig } from 'umi';
 import px2rem from 'postcss-px2rem';
 
 export default defineConfig({
+  publicPath:'./',
   nodeModulesTransform: {
     type: 'none',
   },
@@ -12,6 +13,7 @@ export default defineConfig({
   // ssr:{
   //   devServerRender: false,
   // },
+  ssr:{},
   dva:{
     immer: true,
     hmr:true
