@@ -2,21 +2,19 @@ import { defineConfig } from 'umi';
 import px2rem from 'postcss-px2rem';
 
 export default defineConfig({
-  publicPath:'./',
+  publicPath: './',
   nodeModulesTransform: {
     type: 'none',
   },
-  routes: [
-    { path: '/', component: '@/pages/index' },
-  ],
+  routes: [{ path: '/', component: '@/pages/index' }],
   // dynamicImport:{},
   // ssr:{
   //   devServerRender: false,
   // },
-  ssr:{},
-  dva:{
+  ssr: {},
+  dva: {
     immer: true,
-    hmr:true
+    hmr: true,
   },
-  extraPostCSSPlugins:[ px2rem({viewportWidth: 7})]
+  extraPostCSSPlugins: [px2rem({ remUnit: 16 })],
 });
