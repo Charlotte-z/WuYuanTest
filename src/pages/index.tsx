@@ -129,67 +129,69 @@ class APP extends Component {
           <img className={`${styles.flower} fr`} src={flower}></img>
           <img className={`${styles.grass} gs`} src={grass}></img>
         </div>
-        <div className={styles.navWrap}>
-          <ul className={styles.navLink}>
-            <li>
-              <a href="">
-                <i className={styles.iconfont}>&#xe62d;</i>主站
-              </a>
-            </li>
-            <li>
-              <a href="">番剧</a>
-            </li>
-            <li>
-              <a href="">游戏中心</a>
-            </li>
-            <li>
-              <a href="">直播</a>
-            </li>
-            <li>
-              <a href="">会员购</a>
-            </li>
-            <li>
-              <a href="">漫画</a>
-            </li>
-            <li>
-              <a href="">赛事</a>
-            </li>
-            <li>
-              <a href="">S10</a>
-            </li>
-            <li>
-              <a href="">
-                <i className={styles.iconfont}>&#xe620;</i>下载APP
-              </a>
-            </li>
-          </ul>
-          {/* 搜索框 */}
-          <div className={styles.searchForm}>
-            <Input
-              onChange={this.searchInput}
-              disableUnderline={true}
-              placeholder="awdwadwa"
-              className={styles.searchFormInput}
-            />
-            <button>
-              <i className={styles.iconfont}>&#xe616;</i>
-            </button>
-          </div>
-          {/* 用户登陆注册 */}
-          <div className={styles.navUser}>
-            <div className={styles.userImg}>
-              <a href="">
-                <img src={require('../../public/img/默认头像.png')} alt="" />
-              </a>
+        <div className={styles.navTabline}>
+          <div className={styles.navWrap}>
+            <ul className={styles.navLink}>
+              <li>
+                <a href="">
+                  <i className={styles.iconfont}>&#xe62d;</i>主站
+                </a>
+              </li>
+              <li>
+                <a href="">番剧</a>
+              </li>
+              <li>
+                <a href="">游戏中心</a>
+              </li>
+              <li>
+                <a href="">直播</a>
+              </li>
+              <li>
+                <a href="">会员购</a>
+              </li>
+              <li>
+                <a href="">漫画</a>
+              </li>
+              <li>
+                <a href="">赛事</a>
+              </li>
+              <li>
+                <a href="">S10</a>
+              </li>
+              <li>
+                <a href="">
+                  <i className={styles.iconfont}>&#xe620;</i>下载APP
+                </a>
+              </li>
+            </ul>
+            {/* 搜索框 */}
+            <div className={styles.searchForm}>
+              <Input
+                onChange={this.searchInput}
+                disableUnderline={true}
+                placeholder="awdwadwa"
+                className={styles.searchFormInput}
+              />
+              <button>
+                <i className={styles.iconfont}>&#xe616;</i>
+              </button>
             </div>
-            <div>
-              <a href="">登陆</a>
-            </div>
-            <div>
-              <a href="">注册</a>
-            </div>
-            <div>
-              <button>投稿</button>
+            {/* 用户登陆注册 */}
+            <div className={styles.navUser}>
+              <div className={styles.userImg}>
+                <a href="">
+                  <img src={require('../../public/img/默认头像.png')} alt="" />
+                </a>
+              </div>
+              <div>
+                <a href="">登陆</a>
+              </div>
+              <div>
+                <a href="">注册</a>
+              </div>
+              <div>
+                <button>投稿</button>
+              </div>
             </div>
           </div>
         </div>
