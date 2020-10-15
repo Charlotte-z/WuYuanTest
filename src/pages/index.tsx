@@ -15,6 +15,11 @@ import Slider from '@material-ui/core/Slider';
 import styles from './nav.less';
 import { connect } from 'umi';
 import { getStyle } from '@/utils/common';
+import girl from '../../public/img/girl.png';
+import hill from '../../public/img/hill.png';
+import flower from '../../public/img/flower.png';
+import grass from '../../public/img/grass.png';
+import leaf from '../../public/img/leaf.png';
 
 const { Component } = React;
 
@@ -118,27 +123,11 @@ class APP extends Component {
       // nav
       <Grid container className={`${styles.nav} nv`}>
         <div className={styles.navBg}>
-          <img
-            className={`${styles.girl} gl`}
-            src="https://i0.hdslb.com/bfs/vc/082e39ef757826401ef82da818310d42e05bc2de.png"
-            alt=""
-          />
-          <img
-            className={`${styles.leaf} lf`}
-            src="https://i0.hdslb.com/bfs/vc/37d9a93baa55870506a6f3e6308e7a0c386b97c7.png"
-          ></img>
-          <img
-            className={`${styles.hill} hl`}
-            src="https://i0.hdslb.com/bfs/vc/dbd5c17c4315714de9e4ee119694d2e9efaf9639.png"
-          ></img>
-          <img
-            className={`${styles.flower} fr`}
-            src="https://i0.hdslb.com/bfs/vc/88537437a7916ecde847fa46652b44fbd3cbbb06.png"
-          ></img>
-          <img
-            className={`${styles.grass} gs`}
-            src="https://i0.hdslb.com/bfs/vc/cd9be0a2716adbae85fd899259381c4b2c2893c7.png"
-          ></img>
+          <img className={`${styles.girl} gl`} src={girl} alt="" />
+          <img className={`${styles.leaf} lf`} src={leaf}></img>
+          <img className={`${styles.hill} hl`} src={hill}></img>
+          <img className={`${styles.flower} fr`} src={flower}></img>
+          <img className={`${styles.grass} gs`} src={grass}></img>
         </div>
         {/* <Grid container xs={4} className={styles.navInnerHeight}>
               <a href=""><div className='ml-24'><i className={styles.mainImg}/><span>主站</span></div></a>
