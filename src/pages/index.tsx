@@ -14,6 +14,7 @@ import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
 import styles from './nav.less';
 import { connect } from 'umi';
+import { getStyle } from '@/utils/common';
 
 const { Component } = React;
 
@@ -24,6 +25,57 @@ class APP extends Component {
       tag: [],
     };
   }
+
+  /**
+   * @author 林间有风Lin
+   * @version 1.0
+   * @description 计算左边高度
+   * @param ele
+   */
+  computedLeft = eles => {
+    let currentWidth = document.documentElement.clientWidth;
+    if (eles.length !== 0)
+      Array.from(eles).forEach(ele => {
+        ele!.style!.marginLeft = `${currentWidth / 10 - 300}px`;
+      });
+  };
+
+  /**
+   * @author 林间有风Lin
+   * @version 1.0
+   * @description 计算背景移动
+   * @param ele
+   */
+  computedBgMove = ele => {
+    let currentWidth = document.documentElement.clientWidth;
+    ele!.style!.backgroundPosition = `${currentWidth / 7 - 400}px 0`;
+  };
+
+  /**
+   * @author 林间有风Lin
+   * @version 1.0
+   * @description 批处理
+   * @param ele
+   */
+  queryBatchArr = arr => {
+    if (arr.length !== 0) {
+      return arr.map(item => {
+        return document.querySelector(item);
+      });
+    }
+    return [];
+  };
+
+  componentDidMount = () => {
+    const eles = this.queryBatchArr(['.gl', '.lf', '.hl', '.fr', '.gs']);
+    const nv = document.querySelector('.nv');
+    this.computedLeft(eles);
+    this.computedBgMove(nv);
+    window.onresize = () => {
+      this.computedLeft(eles);
+      this.computedBgMove(nv);
+    };
+  };
 
   /**
    * @author 林间有风Lin
@@ -64,80 +116,63 @@ class APP extends Component {
 
     return (
       // nav
-      <Grid container className={styles.nav}>
+      <Grid container className={`${styles.nav} nv`}>
         <div className={styles.navBg}>
           <img
-            className={styles.girl}
+            className={`${styles.girl} gl`}
             src="https://i0.hdslb.com/bfs/vc/082e39ef757826401ef82da818310d42e05bc2de.png"
             alt=""
           />
+          <img
+            className={`${styles.leaf} lf`}
+            src="https://i0.hdslb.com/bfs/vc/37d9a93baa55870506a6f3e6308e7a0c386b97c7.png"
+          ></img>
+          <img
+            className={`${styles.hill} hl`}
+            src="https://i0.hdslb.com/bfs/vc/dbd5c17c4315714de9e4ee119694d2e9efaf9639.png"
+          ></img>
+          <img
+            className={`${styles.flower} fr`}
+            src="https://i0.hdslb.com/bfs/vc/88537437a7916ecde847fa46652b44fbd3cbbb06.png"
+          ></img>
+          <img
+            className={`${styles.grass} gs`}
+            src="https://i0.hdslb.com/bfs/vc/cd9be0a2716adbae85fd899259381c4b2c2893c7.png"
+          ></img>
         </div>
-        <Grid container xs={4} className={styles.navInnerHeight}>
-          <a href="">
-            <div className="ml-24">
-              <i className={styles.mainImg} />
-              <span>主站</span>
-            </div>
-          </a>
-          <a href="">
-            <div className="ml-24">番剧</div>
-          </a>
-          <a href="">
-            <div className="ml-24">游戏中心</div>
-          </a>
-          <a href="">
-            <div className="ml-24">直播</div>
-          </a>
-          <a href="">
-            <div className="ml-24">会员购</div>
-          </a>
-          <a href="">
-            <div className="ml-24">漫画</div>
-          </a>
-          <a href="">
-            <div className="ml-24">赛事</div>
-          </a>
-          <a href="">
-            <div className="ml-24">图片</div>
-          </a>
-          <a href="">
-            <div className="ml-24">
-              <i className={styles.phoneImg} />
-              下载APP
-            </div>
-          </a>
-        </Grid>
-        <Grid container xs={4} className={styles.navInnerHeight}>
-          <Grid item xs={6} className={styles.searchFormWrapper}>
-            <Input
-              onChange={this.searchFormInput}
-              disableUnderline={true}
-              className={styles.searchForm}
-              placeholder="awdwadwa"
-            />
-            <div className={styles.historyForm}>
-              {tag?.length > 0
-                ? tag.map(item => (
-                    <p key={item.value} className={styles.historyItem}>
-                      {item.value}
-                    </p>
-                  ))
-                : null}
-            </div>
-          </Grid>
-          <Grid item xs>
-            <Button
-              style={{
-                background: 'rgb(225, 225, 225)',
-                borderRadius: '0px',
-                height: '80%',
-              }}
-            >
-              <i className={styles.searchBtn} />
-            </Button>
-          </Grid>
-        </Grid>
-        <Grid container xs={4} className={styles.navInnerHeight}></Grid>
+        {/* <Grid container xs={4} className={styles.navInnerHeight}>
+              <a href=""><div className='ml-24'><i className={styles.mainImg}/><span>主站</span></div></a>
+              <a href=""><div className='ml-24'>番剧</div></a>
+              <a href=""><div className='ml-24'>游戏中心</div></a>
+              <a href=""><div className='ml-24'>直播</div></a>
+              <a href=""><div className='ml-24'>会员购</div></a>
+              <a href=""><div className='ml-24'>漫画</div></a>
+              <a href=""><div className='ml-24'>赛事</div></a>
+              <a href=""><div className='ml-24'>图片</div></a>
+              <a href=""><div className='ml-24'><i className={styles.phoneImg}/>下载APP</div></a>
+            </Grid> 
+            <Grid container xs={4} className={styles.navInnerHeight}>
+              <Grid item xs={6} className={styles.searchFormWrapper}>
+                <Input
+                  onChange={this.searchFormInput}
+                  disableUnderline={true}
+                  className={styles.searchForm} 
+                  placeholder='awdwadwa'/>
+                  <div className={styles.historyForm}>
+                    {
+                      tag?.length > 0 ? 
+                      tag.map(item => <p key={item.value} className={styles.historyItem}>{item.value}</p>)
+                      :null
+                    }
+                  </div>
+              </Grid>
+              <Grid item xs>
+                <Button style={{background:'rgb(225, 225, 225)', borderRadius:'0px', height:'80%'}}>
+                  <i className={styles.searchBtn}/>
+                </Button>
+              </Grid>
+            </Grid>
+            <Grid container xs={4} className={styles.navInnerHeight}></Grid> */}
       </Grid>
     );
   }
