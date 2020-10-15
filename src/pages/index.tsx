@@ -64,7 +64,7 @@ class APP extends Component {
 
     return (
       // nav
-      <Grid container className={styles.nav}>
+      <div className={styles.nav}>
         <div className={styles.navBg}>
           <img
             className={styles.girl}
@@ -72,73 +72,71 @@ class APP extends Component {
             alt=""
           />
         </div>
-        <Grid container xs={4} className={styles.navInnerHeight}>
-          <a href="">
-            <div className="ml-24">
-              <i className={styles.mainImg} />
-              <span>主站</span>
-            </div>
-          </a>
-          <a href="">
-            <div className="ml-24">番剧</div>
-          </a>
-          <a href="">
-            <div className="ml-24">游戏中心</div>
-          </a>
-          <a href="">
-            <div className="ml-24">直播</div>
-          </a>
-          <a href="">
-            <div className="ml-24">会员购</div>
-          </a>
-          <a href="">
-            <div className="ml-24">漫画</div>
-          </a>
-          <a href="">
-            <div className="ml-24">赛事</div>
-          </a>
-          <a href="">
-            <div className="ml-24">图片</div>
-          </a>
-          <a href="">
-            <div className="ml-24">
-              <i className={styles.phoneImg} />
-              下载APP
-            </div>
-          </a>
-        </Grid>
-        <Grid container xs={4} className={styles.navInnerHeight}>
-          <Grid item xs={6} className={styles.searchFormWrapper}>
+        <div className={styles.navWrap}>
+          <ul className={styles.navLink}>
+            <li>
+              <a href="">
+                <i className={styles.iconfont}>&#xe62d;</i>主站
+              </a>
+            </li>
+            <li>
+              <a href="">番剧</a>
+            </li>
+            <li>
+              <a href="">游戏中心</a>
+            </li>
+            <li>
+              <a href="">直播</a>
+            </li>
+            <li>
+              <a href="">会员购</a>
+            </li>
+            <li>
+              <a href="">漫画</a>
+            </li>
+            <li>
+              <a href="">赛事</a>
+            </li>
+            <li>
+              <a href="">S10</a>
+            </li>
+            <li>
+              <a href="">
+                <i className={styles.iconfont}>&#xe620;</i>下载APP
+              </a>
+            </li>
+          </ul>
+          {/* 搜索框 */}
+          <div className={styles.searchForm}>
             <Input
-              onChange={this.searchFormInput}
+              onChange={this.searchInput}
               disableUnderline={true}
-              className={styles.searchForm}
               placeholder="awdwadwa"
+              className={styles.searchFormInput}
             />
-            <div className={styles.historyForm}>
-              {tag?.length > 0
-                ? tag.map(item => (
-                    <p key={item.value} className={styles.historyItem}>
-                      {item.value}
-                    </p>
-                  ))
-                : null}
+            <button>
+              <i className={styles.iconfont}>&#xe616;</i>
+            </button>
+          </div>
+          {/* 用户登陆注册 */}
+          <div className={styles.navUser}>
+            <div className={styles.userImg}>
+              <a href="">
+                <img src={require('../../public/img/默认头像.png')} alt="" />
+              </a>
             </div>
-          </Grid>
-          <Grid item xs>
-            <Button
-              style={{
-                background: 'rgb(225, 225, 225)',
-                borderRadius: '0px',
-                height: '80%',
-              }}
-            >
-              <i className={styles.searchBtn} />
-            </Button>
-          </Grid>
-        </Grid>
-        <Grid container xs={4} className={styles.navInnerHeight}></Grid>
-      </Grid>
+            <div>
+              <a href="">登陆</a>
+            </div>
+            <div>
+              <a href="">注册</a>
+            </div>
+            <div>
+              <button>投稿</button>
+            </div>
+          </div>
+        </div>
+      </div>
     );
   }
 }
