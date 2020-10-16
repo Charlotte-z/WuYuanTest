@@ -89,7 +89,7 @@ export const NavBg = () => {
         { obj: eles[0], blur: originBlur[0] },
         { obj: eles[2], blur: originBlur[2] },
       ];
-      nv!.onmousemove = e => {
+      nv!.onmousemove = (e: { clientX: number }) => {
         Array.from(moveElesFront).forEach(item => {
           item.obj!.style.transition = '0s';
 
