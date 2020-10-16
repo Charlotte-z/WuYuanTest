@@ -104,21 +104,21 @@ class APP extends Component {
    */
   searchFormInput = val => {
     const value = val.target.value;
-
     const term = this.isChinese(value) ? window.encodeURI(value) : value; // 查询字段前置操作
-
     const { dispatch } = this.props;
-
     dispatch({
       type: 'SearchListModel/getSearchList',
       payload: { term },
     });
   };
-
+  /**
+   *
+   */
+  getSearchList = () => {};
+  stratSearch = () => {};
   render() {
     // const { tag } = this.state
     const { tag } = this.props.SearchListModel.list;
-
     return (
       // nav
       <div className={`${styles.nav} nv`}>
@@ -166,18 +166,34 @@ class APP extends Component {
             </ul>
             {/* 搜索框 */}
             <div className={styles.searchForm}>
-              <Input
-                onChange={this.searchInput}
-                disableUnderline={true}
-                placeholder="awdwadwa"
-                className={styles.searchFormInput}
-              />
-              <button>
+              <div className={styles.searchWrap}>
+                <Input
+                  onChange={this.searchFormInput}
+                  disableUnderline={true}
+                  placeholder="awdwadwa"
+                  className={styles.searchFormInput}
+                />
+                <div className={styles.historyForm}>
+                  {tag?.length > 0
+                    ? tag.map(item => (
+                        <p key={item.value} className={styles.historyItem}>
+                          {item.value}
+                        </p>
+                      ))
+                    : null}
+                </div>
+              </div>
+              <button onClick={this.stratSearch}>
                 <i className={styles.iconfont}>&#xe616;</i>
               </button>
             </div>
             {/* 用户登陆注册 */}
             <div className={styles.navUser}>
+              <div className={styles.searchMIN}>
+                <a href="">
+                  <i className={styles.iconfont}>&#xe616;</i>
+                </a>
+              </div>
               <div className={styles.userImg}>
                 <a href="">
                   <img src={require('../../public/img/默认头像.png')} alt="" />
