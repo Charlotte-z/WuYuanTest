@@ -1,3 +1,24 @@
+@font-face {
+  font-family: 'iconfont'; /* project id 2125935 */
+  src: url('//at.alicdn.com/t/font_2125935_87kx8ceql2x.eot');
+  src: url('//at.alicdn.com/t/font_2125935_87kx8ceql2x.eot?#iefix')
+      format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_2125935_87kx8ceql2x.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_2125935_87kx8ceql2x.woff') format('woff'),
+    url('//at.alicdn.com/t/font_2125935_87kx8ceql2x.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_2125935_87kx8ceql2x.svg#iconfont') format('svg');
+}
+.iconfont {
+  font-family: 'iconfont' !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -webkit-text-stroke-width: 0.2px;
+  -moz-osx-font-smoothing: grayscale;
+}
+li {
+  list-style: none;
+}
 .nav {
   position: relative;
   height: 166px;
@@ -40,55 +61,67 @@
       z-index: 4;
     }
   }
+  .navWrap {
+    position: relative;
+    z-index: 99;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 20px 0 20px;
+    height: 46px;
+    .navLink {
+      display: flex;
+      height: 100%;
+      li {
+        a {
+          display: inline-block;
+          height: 100%;
+          margin-right: 10px;
+          color: #fff;
+          line-height: 36px;
+        }
+      }
+    }
+    // 搜索框
+    .searchForm {
+      display: flex;
+      .searchFormInput {
+        padding-left: 10px;
+        width: 450px;
+        height: 100%;
+        background-color: #fff;
+        border-radius: 2px 0 0 2px;
+      }
+      button {
+        width: 50px;
+        border: none;
+        border-radius: 0 2px 2px 0;
+        outline: none;
+        cursor: pointer;
+        .iconfont {
+          font-weight: 700;
+        }
+      }
+    }
+    .navUser {
+      display: flex;
+      height: 100%;
+      .userImg {
+        width: 36px;
+        height: 36px;
+        background-color: #fff;
+        border-radius: 50%;
+        line-height: 36px;
+        text-align: center;
+        img {
+          width: 20px;
+          line-height: 20px;
+        }
+      }
+    }
+  }
 }
-
-.name {
-  width: 1020px;
-  height: 16px;
-}
-
-.mainImg {
-  width: 16px;
-  height: 16px;
-  display: inline-block;
-  background: url(../../public/img/电视.png);
-  background-size: 16px 16px;
-  margin-right: 8px;
-  background-repeat: no-repeat;
-}
-
-.searchForm {
-  width: 100%;
+.navTabline {
   height: 80%;
-  background: #fff;
-  padding-left: 20px;
-  border: 1px solid #fff;
-  border-radius: 12px 0px 0px 12px;
-}
-
-.navInnerHeight {
-  height: 30px;
-  position: relative;
-  z-index: 10;
-}
-
-.searchFormWrapper {
-  position: relative;
-}
-
-.searchBtn {
-  width: 36px;
-  height: 36px;
-  background: url(../../public/img/搜索.png) no-repeat;
-  background-size: 36px 36px;
-}
-
-.historyForm {
-  position: absolute;
   width: 100%;
-  background: #fff;
-}
-
-.historyItem {
-  padding: 40px;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), transparent);
 }
