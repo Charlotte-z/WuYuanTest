@@ -1,5 +1,5 @@
 import { getStyle } from '@/utils/common';
-import styles from '../nav.less';
+import styles from './nav.less';
 import girl from '@public/img/girl.png';
 import hill from '@public/img/hill.png';
 import flower from '@public/img/flower.png';

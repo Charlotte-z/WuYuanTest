@@ -12,7 +12,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import styles from './nav.less';
+import styles from './NavBg/nav.less';
 import { connect } from 'umi';
 import { getStyle } from '@/utils/common';
 import { NavBg } from './NavBg';
@@ -126,7 +126,7 @@ class APP extends Component {
             <div className={styles.navUser}>
               <div className={styles.userImg}>
                 <a href="">
-                  <img src={require('../../public/img/默认头像.png')} alt="" />
+                  <img src={require('@public/img/默认头像.png')} alt="" />
                 </a>
               </div>
               <div>
