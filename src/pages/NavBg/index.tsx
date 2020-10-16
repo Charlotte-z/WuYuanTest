@@ -14,7 +14,10 @@ export const NavBg = () => {
    * @description 计算左边高度
    * @param ele
    */
-  const computedLeft = (eles, currentWidth) => {
+  const computedLeft = (
+    eles: Iterable<unknown> | ArrayLike<unknown>,
+    currentWidth: number,
+  ) => {
     if (eles.length !== 0)
       Array.from(eles).forEach(ele => {
         ele!.style!.marginLeft = `${currentWidth / 10 - 300}px`;
@@ -27,7 +30,7 @@ export const NavBg = () => {
    * @description 计算背景移动
    * @param ele
    */
-  const computedBgMove = (ele, currentWidth) => {
+  const computedBgMove = (ele: Element | null, currentWidth: number) => {
     ele!.style!.backgroundPosition = `${currentWidth / 7 - 400}px 0`;
   };
 
@@ -37,7 +40,7 @@ export const NavBg = () => {
    * @description 批处理
    * @param ele
    */
-  const queryBatchArr = arr => {
+  const queryBatchArr = (arr: string[]): any => {
     if (arr.length !== 0) {
       return arr.map(item => {
         return document.querySelector(item);
@@ -52,7 +55,9 @@ export const NavBg = () => {
    * @description 提取filter变量
    * @param eles
    */
-  const getOriginBlur = eles => {
+  const getOriginBlur = (
+    eles: Iterable<unknown> | ArrayLike<unknown>,
+  ): Number[] => {
     return Array.from(eles).map(item =>
       Number(getStyle(item).filter.match(/blur\((\d+)px\)/)?.[1]),
     );
@@ -63,7 +68,7 @@ export const NavBg = () => {
    * @version 1.0
    * @description 动画效果总集合
    */
-  const move = () => {
+  const move = (): void => {
     const eles = queryBatchArr(['.gl', '.lf', '.hl', '.fr', '.gs']);
     const nv = document.querySelector('.nv');
     const originBlur = getOriginBlur(eles);
