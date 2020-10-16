@@ -13,14 +13,14 @@
 //   );
 // }
 
-import React from "react";
+import React from 'react';
 import {
   BrowserRouter as Router,
   Route,
   Link,
   Redirect,
-  withRouter
-} from "react-router-dom";
+  withRouter,
+} from 'react-router-dom';
 
 ////////////////////////////////////////////////////////////
 // 1. Click the public page
@@ -56,46 +56,43 @@ const fakeAuth = {
   signout(cb) {
     this.isAuthenticated = false;
     setTimeout(cb, 100);
-  }
+  },
 };
 
-const AuthButton = withRouter(
-  ({ history }) =>
-    fakeAuth.isAuthenticated ? (
-      <p>
-        Welcome!{" "}
-        <button
-          onClick={() => {
-            fakeAuth.signout(() => history.push("/"));
-          }}
-        >
-          Sign out
-        </button>
-      </p>
-    ) : (
-      <p>You are not logged in.</p>
-    )
+const AuthButton = withRouter(({ history }) =>
+  fakeAuth.isAuthenticated ? (
+    <p>
+      Welcome!{' '}
+      <button
+        onClick={() => {
+          fakeAuth.signout(() => history.push('/'));
+        }}
+      >
+        Sign out
+      </button>
+    </p>
+  ) : (
+    <p>You are not logged in.</p>
+  ),
 );
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
-    render={props =>
-      {
-        console.log(props);
-        
-        return fakeAuth.isAuthenticated ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: "/login",
-              state: { from: props.location }
-            }}
-          />
-        )
-      }
-    }
+    render={props => {
+      console.log(props);
+
+      return fakeAuth.isAuthenticated ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/login',
+            state: { from: props.location },
+          }}
+        />
+      );
+    }}
   />
 );
 
@@ -104,7 +101,7 @@ const Protected = () => <h3>Protected1232312</h3>;
 
 class Login extends React.Component {
   state = {
-    redirectToReferrer: false
+    redirectToReferrer: false,
   };
 
   login = () => {
@@ -114,8 +111,7 @@ class Login extends React.Component {
   };
 
   render() {
-    
-    const { from } = this.props.location.state || { from: { pathname: "/" } };
+    const { from } = this.props.location.state || { from: { pathname: '/' } };
     const { redirectToReferrer } = this.state;
     if (redirectToReferrer) {
       return <Redirect to={from} />;

@@ -22,7 +22,7 @@ li {
 .nav {
   position: relative;
   height: 166px;
-  background-image: url('../../public/img/bg.png');
+  background-image: url('~@public/img/bg.png');
   background-position: -400px 0;
   background-repeat: no-repeat;
   overflow: hidden;
@@ -31,16 +31,21 @@ li {
     z-index: 1;
     > img {
       position: absolute;
+      transition: 0s;
+      transform: translateX(0px);
     }
     .girl {
+      filter: blur(0px);
       height: 166px;
     }
     .grass {
       height: 166px;
+      filter: blur(3px);
       object-fit: cover;
       z-index: 2;
     }
     .hill {
+      filter: blur(0px);
       height: 166px;
     }
     .leaf {
@@ -48,9 +53,11 @@ li {
       margin-left: -100px;
       margin-top: 30px;
       z-index: 3;
+      filter: blur(7px);
     }
     .flower {
       height: 166px;
+      filter: blur(4px);
       z-index: 4;
     }
   }

@@ -12,14 +12,10 @@ import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
-import styles from './nav.less';
+import styles from './NavBg/nav.less';
 import { connect } from 'umi';
 import { getStyle } from '@/utils/common';
-import girl from '../../public/img/girl.png';
-import hill from '../../public/img/hill.png';
-import flower from '../../public/img/flower.png';
-import grass from '../../public/img/grass.png';
-import leaf from '../../public/img/leaf.png';
+import { NavBg } from './NavBg';
 
 const { Component } = React;
 
@@ -34,53 +30,9 @@ class APP extends Component {
   /**
    * @author 林间有风Lin
    * @version 1.0
-   * @description 计算左边高度
-   * @param ele
+   * @description 绑定事件
    */
-  computedLeft = eles => {
-    let currentWidth = document.documentElement.clientWidth;
-    if (eles.length !== 0)
-      Array.from(eles).forEach(ele => {
-        ele!.style!.marginLeft = `${currentWidth / 10 - 300}px`;
-      });
-  };
-
-  /**
-   * @author 林间有风Lin
-   * @version 1.0
-   * @description 计算背景移动
-   * @param ele
-   */
-  computedBgMove = ele => {
-    let currentWidth = document.documentElement.clientWidth;
-    ele!.style!.backgroundPosition = `${currentWidth / 7 - 400}px 0`;
-  };
-
-  /**
-   * @author 林间有风Lin
-   * @version 1.0
-   * @description 批处理
-   * @param ele
-   */
-  queryBatchArr = arr => {
-    if (arr.length !== 0) {
-      return arr.map(item => {
-        return document.querySelector(item);
-      });
-    }
-    return [];
-  };
-
-  componentDidMount = () => {
-    const eles = this.queryBatchArr(['.gl', '.lf', '.hl', '.fr', '.gs']);
-    const nv = document.querySelector('.nv');
-    this.computedLeft(eles);
-    this.computedBgMove(nv);
-    window.onresize = () => {
-      this.computedLeft(eles);
-      this.computedBgMove(nv);
-    };
-  };
+  componentDidMount = () => {};
 
   /**
    * @author 林间有风Lin
@@ -122,13 +74,7 @@ class APP extends Component {
     return (
       // nav
       <div className={`${styles.nav} nv`}>
-        <div className={styles.navBg}>
-          <img className={`${styles.girl} gl`} src={girl} alt="" />
-          <img className={`${styles.leaf} lf`} src={leaf}></img>
-          <img className={`${styles.hill} hl`} src={hill}></img>
-          <img className={`${styles.flower} fr`} src={flower}></img>
-          <img className={`${styles.grass} gs`} src={grass}></img>
-        </div>
+        <NavBg />
         <div className={styles.navTabline}>
           <div className={styles.navWrap}>
             <ul className={styles.navLink}>
@@ -196,7 +142,7 @@ class APP extends Component {
               </div>
               <div className={styles.userImg}>
                 <a href="">
-                  <img src={require('../../public/img/默认头像.png')} alt="" />
+                  <img src={require('@public/img/默认头像.png')} alt="" />
                 </a>
               </div>
               <div>
