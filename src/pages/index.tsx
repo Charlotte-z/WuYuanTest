@@ -37,8 +37,7 @@ class APP extends Component {
    * @description 计算左边高度
    * @param ele
    */
-  computedLeft = eles => {
-    let currentWidth = document.documentElement.clientWidth;
+  computedLeft = (eles, currentWidth) => {
     if (eles.length !== 0)
       Array.from(eles).forEach(ele => {
         ele!.style!.marginLeft = `${currentWidth / 10 - 300}px`;
@@ -51,8 +50,7 @@ class APP extends Component {
    * @description 计算背景移动
    * @param ele
    */
-  computedBgMove = ele => {
-    let currentWidth = document.documentElement.clientWidth;
+  computedBgMove = (ele, currentWidth) => {
     ele!.style!.backgroundPosition = `${currentWidth / 7 - 400}px 0`;
   };
 
@@ -71,14 +69,70 @@ class APP extends Component {
     return [];
   };
 
+  /**
+   * @author 林间有风Lin
+   * @version 1.0
+   * @description 提取filter变量
+   * @param eles
+   */
+  getOriginBlur = eles => {
+    return Array.from(eles).map(item =>
+      Number(getStyle(item).filter.match(/blur\((\d+)px\)/)?.[1]),
+    );
+  };
+
+  /**
+   * @author 林间有风Lin
+   * @version 1.0
+   * @description 绑定事件
+   */
   componentDidMount = () => {
     const eles = this.queryBatchArr(['.gl', '.lf', '.hl', '.fr', '.gs']);
     const nv = document.querySelector('.nv');
-    this.computedLeft(eles);
-    this.computedBgMove(nv);
+    const originBlur = this.getOriginBlur(eles);
+    console.log(originBlur);
+
+    let currentWidth = document.documentElement.clientWidth;
+    let currentX = 0;
+    let lastX = 0;
+    this.computedLeft(eles, currentWidth);
+    this.computedBgMove(nv, currentWidth);
+
+    if (eles?.length > 0) {
+      const moveElesFront = [
+        { obj: eles[1], blur: originBlur[1] },
+        { obj: eles[3], blur: originBlur[3] },
+        { obj: eles[4], blur: originBlur[4] },
+      ];
+      const moveElesEnd = [
+        { obj: eles[0], blur: originBlur[0] },
+        { obj: eles[2], blur: originBlur[2] },
+      ];
+      nv!.onmousemove = e => {
+        currentX = e.clientX;
+        Array.from(moveElesFront).forEach(item => {
+          item.obj!.style.transition = '0s';
+          item.obj!.style!.filter = `blur(${4 - currentX / 500}px)`;
+          item.obj!.style!.transform = `translateX(${currentX / 100}px)`;
+        });
+
+        Array.from(moveElesEnd).forEach(item => {
+          item.obj!.style.transition = '0s';
+          item.obj!.style!.filter = `blur(${currentX / 500}px)`;
+          item.obj!.style!.transform = `translateX(${4 - currentX / 100}px)`;
+        });
+      };
+      nv!.onmouseleave = () => {
+        Array.from(eles).forEach(item => {
+          item.style.transition = '1s';
+          item!.style.transform = `translateX(0)`;
+        });
+      };
+    }
+
     window.onresize = () => {
-      this.computedLeft(eles);
-      this.computedBgMove(nv);
+      this.computedLeft(eles, currentWidth);
+      this.computedBgMove(nv, currentWidth);
     };
   };
 
@@ -123,9 +177,9 @@ class APP extends Component {
       // nav
       <Grid container className={`${styles.nav} nv`}>
         <div className={styles.navBg}>
-          <img className={`${styles.girl} gl`} src={girl} alt="" />
-          <img className={`${styles.leaf} lf`} src={leaf}></img>
+          <img className={`${styles.girl} gl`} src={girl} />
           <img className={`${styles.hill} hl`} src={hill}></img>
+          <img className={`${styles.leaf} lf`} src={leaf}></img>
           <img className={`${styles.flower} fr`} src={flower}></img>
           <img className={`${styles.grass} gs`} src={grass}></img>
         </div>
