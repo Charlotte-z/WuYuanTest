@@ -40,6 +40,8 @@ class APP extends Component {
   computedLeft = (eles, currentWidth) => {
     if (eles.length !== 0)
       Array.from(eles).forEach(ele => {
+        console.log(currentWidth / 10 - 300);
+
         ele!.style!.marginLeft = `${currentWidth / 10 - 300}px`;
       });
   };
@@ -90,7 +92,6 @@ class APP extends Component {
     const eles = this.queryBatchArr(['.gl', '.lf', '.hl', '.fr', '.gs']);
     const nv = document.querySelector('.nv');
     const originBlur = this.getOriginBlur(eles);
-    console.log(originBlur);
 
     let currentWidth = document.documentElement.clientWidth;
     let currentX = 0;
@@ -131,6 +132,7 @@ class APP extends Component {
     }
 
     window.onresize = () => {
+      currentWidth = document.documentElement.clientWidth;
       this.computedLeft(eles, currentWidth);
       this.computedBgMove(nv, currentWidth);
     };
