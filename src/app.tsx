@@ -36,7 +36,7 @@ React.rModel = (state, point) => {
           set: value => {
             if (temp === value) return; // 避免死循环
             temp = value;
-            point.state.data = temp;
+            point.state[`${stateStr}`] = temp;
             point.forceUpdate();
           },
         });
