@@ -25,6 +25,8 @@ class APP extends Component {
     this.state = {
       tag: [],
     };
+    this.searchValue = React.createRef();
+    this.save = '';
   }
 
   /**
@@ -67,10 +69,14 @@ class APP extends Component {
    *
    */
   getSearchList = () => {};
-  stratSearch = () => {};
+
+  stratSearch = () => {
+    console.log(this.searchValue.current.getAttribute('r-model'));
+  };
   render() {
     // const { tag } = this.state
     const { tag } = this.props.SearchListModel.list;
+
     return (
       // nav
       <div className={`${styles.nav} nv`}>
@@ -114,7 +120,19 @@ class APP extends Component {
             <div className={styles.searchForm}>
               <div className={styles.searchWrap}>
                 <Input
+                  r-model={this.save}
+                  ref={this.searchValue}
                   onChange={this.searchFormInput}
+                  onBlur={e => {
+                    if (this.searchValue?.current) {
+                      this.searchValue.current.setAttribute(
+                        'r-model',
+                        e.target.value,
+                      );
+                    }
+
+                    this.save = e;
+                  }}
                   disableUnderline={true}
                   placeholder="awdwadwa"
                   className={styles.searchFormInput}
