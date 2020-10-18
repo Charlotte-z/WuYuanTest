@@ -91,14 +91,14 @@ export const NavBg = () => {
       ];
       nv!.onmousemove = (e: { clientX: number }) => {
         Array.from(moveElesFront).forEach(item => {
-          item.obj!.style.transition = '.13s';
+          item.obj!.style.transition = '.1s';
 
           item.obj!.style!.filter = `blur(${item.blur - currentX / 500}px)`;
           item.obj!.style!.transform = `translateX(${currentX / 100}px)`;
         });
 
         Array.from(moveElesEnd).forEach(item => {
-          item.obj!.style.transition = '.13s';
+          item.obj!.style.transition = '.1s';
           item.obj!.style!.filter = `blur(${currentX / 500}px)`;
           item.obj!.style!.transform = `translateX(${item.blur -
             currentX / 100}px)`;
