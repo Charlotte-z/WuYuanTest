@@ -15,6 +15,7 @@ import Slider from '@material-ui/core/Slider';
 import styles from './NavBg/nav.less';
 import { connect } from 'umi';
 import { getStyle } from '@/utils/common';
+import { RIF } from '@/utils/directive/Implements';
 import { NavBg } from './NavBg';
 
 const { Component } = React;
@@ -164,6 +165,9 @@ class APP extends Component {
             </div>
           </div>
         </div>
+        <RIF condition={1 > 0}>
+          <p>awd</p>
+        </RIF>
       </>
     );
   }

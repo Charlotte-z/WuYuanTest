@@ -9,6 +9,7 @@ import ReactDOM from 'react-dom';
  */
 React.rModel = (state, point) => {
   let once = false;
+  console.log(ReactDOM.findDOMNode(point));
 
   if (!once) {
     // 性能优化,每次组件加载完毕,只会进行一次数据加载，尽管如此，性能依旧不够好，正在积极寻找办法，运行时始终会消耗很大性能
@@ -18,6 +19,8 @@ React.rModel = (state, point) => {
     let finalStr: null = null; // 避免null
 
     Array.from(all).forEach((item, index) => {
+      console.log(index);
+
       // 拿到每个元素
       let stateStr = item.getAttribute('r-model'); // 拿到r-model属性
       if (stateStr) finalStr = stateStr;
