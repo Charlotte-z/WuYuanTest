@@ -8,6 +8,7 @@
 import { Button, Input } from '@material-ui/core';
 import { Alert } from '@material-ui/lab';
 import React from 'react';
+import {Tabs} from 'antd'
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
@@ -15,7 +16,7 @@ import Slider from '@material-ui/core/Slider';
 import styles from './NavBg/nav.less';
 import { connect } from 'umi';
 import { getStyle } from '@/utils/common';
-import { RIF } from '@/utils/directive/Implements';
+import { RIF, RMODEL } from '@/utils/directive/Implements';
 import { NavBg } from './NavBg';
 
 const { Component } = React;
@@ -27,7 +28,6 @@ class APP extends Component {
       tag: [],
     };
   }
-
   /**
    * @author 林间有风Lin
    * @version 1.0
@@ -78,7 +78,7 @@ class APP extends Component {
     return (
       // nav
       <>
-        <div className={`${styles.nav} nv`}>
+        <div r-if={1<0} className={`${styles.nav} nv`}>
           <NavBg />
           <div className={styles.navTabline}>
             <div className={styles.navWrap}>
@@ -119,11 +119,11 @@ class APP extends Component {
               <div className={styles.searchForm}>
                 <div className={styles.searchWrap}>
                   <Input
-                    r-model="data"
+                    // r-model="data"
                     // value={this.state.data}
-                    // onChange={this.searchFormInput}
+                    onChange={this.searchFormInput}
                     disableUnderline={true}
-                    placeholder="awdwadwa"
+                    placeholder=""
                     className={styles.searchFormInput}
                   />
                   <div className={styles.historyForm}>
@@ -165,9 +165,6 @@ class APP extends Component {
             </div>
           </div>
         </div>
-        <RIF condition={1 > 0}>
-          <p>awd</p>
-        </RIF>
       </>
     );
   }
