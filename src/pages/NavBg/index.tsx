@@ -91,14 +91,14 @@ export const NavBg = () => {
       ];
       nv!.onmousemove = (e: { clientX: number }) => {
         Array.from(moveElesFront).forEach(item => {
-          item.obj!.style.transition = '.1s';
+          item.obj!.style.transition = '.1s transform';
 
           item.obj!.style!.filter = `blur(${item.blur - currentX / 500}px)`;
           item.obj!.style!.transform = `translateX(${currentX / 100}px)`;
         });
 
         Array.from(moveElesEnd).forEach(item => {
-          item.obj!.style.transition = '.1s';
+          item.obj!.style.transition = '.1s transform';
           item.obj!.style!.filter = `blur(${currentX / 500}px)`;
           item.obj!.style!.transform = `translateX(${item.blur -
             currentX / 100}px)`;
@@ -107,7 +107,7 @@ export const NavBg = () => {
       };
       nv!.onmouseleave = () => {
         Array.from(eles).forEach(item => {
-          item.style.transition = '1s';
+          item.style.transition = '.5s transform';
           item!.style.transform = `translateX(0)`;
         });
         currentX = 0;
@@ -124,7 +124,7 @@ export const NavBg = () => {
   useEffect(move, []);
 
   return (
-    <div className={styles.navBg}>
+    <div r-if={'awd'} className={styles.navBg}>
       <img className={`${styles.girl} gl`} src={girl} />
       <img className={`${styles.hill} hl`} src={hill}></img>
       <img className={`${styles.leaf} lf`} src={leaf}></img>

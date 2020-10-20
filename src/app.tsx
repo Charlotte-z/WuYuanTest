@@ -1,7 +1,7 @@
 import { history } from 'umi';
 import React from 'react';
 import ReactDOM from 'react-dom';
-
+import '@/utils/index';
 /**
  * @author 林间有风Lin
  * @version 1.0
@@ -53,4 +53,5 @@ React.rModel = (state, point) => {
 // 阻塞渲染器
 // develop分支
 const render = oldRender => oldRender();
+
 export { render };

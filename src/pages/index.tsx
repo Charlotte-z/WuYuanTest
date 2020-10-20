@@ -72,15 +72,12 @@ class APP extends Component {
   getSearchList = () => {};
 
   stratSearch = val => {
-    const value: any[] = val.target.value;
-
+    const value = val.target.value;
     if (value) {
-      console.log(value);
-
-      // let searchistory =new Array(localStorage.getItem("searchistory"))
-      // new Array(value)
-      // localStorage.setItem("searchistory", JSON.stringify(value));
-      // console.log(searchistory);
+      let searchistory = new Array(localStorage.getItem('searchistory'));
+      new Array(value);
+      localStorage.setItem('searchistory', JSON.stringify(value));
+      console.log(searchistory);
     }
   };
 
