@@ -78,7 +78,7 @@ class APP extends Component {
     return (
       // nav
       <>
-        <div r-if={1<0} className={`${styles.nav} nv`}>
+        <div className={`${styles.nav} nv`}>
           <NavBg />
           <div className={styles.navTabline}>
             <div className={styles.navWrap}>
