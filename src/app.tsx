@@ -5,12 +5,11 @@ import ReactDOM from 'react-dom';
 /**
  * @author 林间有风Lin
  * @version 1.0
- * @description 双向数据绑定算法
+ * @description 双向数据绑定算法 一旦在项目大量使用，性能几乎没有
  */
 React.rModel = (state, point) => {
   let once = false;
   console.log(ReactDOM.findDOMNode(point));
-
   if (!once) {
     // 性能优化,每次组件加载完毕,只会进行一次数据加载，尽管如此，性能依旧不够好，正在积极寻找办法，运行时始终会消耗很大性能
     const minTree = ReactDOM.findDOMNode(point); // 最小查找树

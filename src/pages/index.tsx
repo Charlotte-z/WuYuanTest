@@ -15,8 +15,8 @@ import Slider from '@material-ui/core/Slider';
 import styles from './NavBg/nav.less';
 import { connect } from 'umi';
 import { getStyle } from '@/utils/common';
-import { RIF } from '@/utils/directive/Implements';
 import { NavBg } from './NavBg';
+import { RIF } from '@/utils/directives/Implements';
 
 const { Component } = React;
 
@@ -71,7 +71,18 @@ class APP extends Component {
    */
   getSearchList = () => {};
 
-  stratSearch = () => {};
+  stratSearch = val => {
+    const value: any[] = val.target.value;
+
+    if (value) {
+      console.log(value);
+
+      // let searchistory =new Array(localStorage.getItem("searchistory"))
+      // new Array(value)
+      // localStorage.setItem("searchistory", JSON.stringify(value));
+      // console.log(searchistory);
+    }
+  };
 
   render() {
     const { tag } = this.props.SearchListModel.list;
@@ -121,7 +132,8 @@ class APP extends Component {
                   <Input
                     r-model="data"
                     // value={this.state.data}
-                    // onChange={this.searchFormInput}
+                    onChange={this.searchFormInput}
+                    onBlur={this.stratSearch}
                     disableUnderline={true}
                     placeholder="awdwadwa"
                     className={styles.searchFormInput}
@@ -165,8 +177,19 @@ class APP extends Component {
             </div>
           </div>
         </div>
-        <RIF condition={1 > 0}>
+        <RIF r-if={1 > 0}>
           <p>awd</p>
+          <p>awd</p>
+          <p>awd</p>
+          <p>awd</p>
+          <p>awd</p>
+          <p>awd</p>
+          <p>awd</p>
+          <p>awd</p>
+          <p>awd</p>
+          <div
+            style={{ width: '100px', height: '100px', background: '#bfc' }}
+          ></div>
         </RIF>
       </>
     );
