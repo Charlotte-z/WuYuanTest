@@ -10,24 +10,16 @@ import { NavBg } from './nav';
 import NavLink from '@/pages/nav/navLink/navHeadr';
 import Suspense from '@/utils/asyncComponent';
 
-const APP = () => {
-  /**
-   * @author 林间有风Lin
-   * @version 1.0
-   * @description 双向数据绑定实现
-   */
-  useEffect(() => {});
-  return (
-    // nav
-    <>
-      <Suspense delay={1500} middle>
-        <div className={`${styles.nav} nv`}>
-          <NavBg />
-          <NavLink />
-        </div>
-      </Suspense>
-    </>
-  );
-};
+const APP = () => (
+  // nav
+  <>
+    <Suspense delay={1300} middle>
+      <div className={`${styles.nav} nv`}>
+        <NavBg />
+        <NavLink />
+      </div>
+    </Suspense>
+  </>
+)
 
 export default APP;
