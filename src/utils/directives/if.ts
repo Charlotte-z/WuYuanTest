@@ -4,7 +4,7 @@
 export default {
   install: ({ value }) => {
     if (!value) {
-      return null
+      return null;
     }
   },
-}
+};

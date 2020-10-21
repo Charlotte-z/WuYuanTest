@@ -1,4 +1,4 @@
-import rIf from './if'
-import rClass from './class'
+import rIf from './if';
+import rClass from './class';
 
-export {rIf, rClass}
+export { rIf, rClass };
