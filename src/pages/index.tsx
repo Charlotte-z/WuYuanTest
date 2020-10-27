@@ -8,6 +8,7 @@ import React, { useEffect } from 'react';
 import styles from './nav/nav.less';
 import { NavBg } from './nav';
 import NavLink from '@/pages/nav/navLink/navHeadr';
+import Content from '@/pages/content/index';
 import Suspense from '@/utils/asyncComponent';
 
 const APP = () => (
@@ -18,8 +19,9 @@ const APP = () => (
         <NavBg />
         <NavLink />
       </div>
+      <Content />
     </Suspense>
   </>
-)
+);
 
 export default APP;

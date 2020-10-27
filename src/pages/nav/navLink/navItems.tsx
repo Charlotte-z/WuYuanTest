@@ -6,7 +6,7 @@ const NavItems = () => {
     <ul className={styles.navLink}>
       <li>
         <a href="">
-          <i className={styles.iconfont}>&#xe62d;</i>主站
+          <i className="iconfont">&#xe62d;</i>主站
         </a>
       </li>
       <li>
@@ -32,7 +32,7 @@ const NavItems = () => {
       </li>
       <li>
         <a href="">
-          <i className={styles.iconfont}>&#xe620;</i>下载APP
+          <i className="iconfont">&#xe620;</i>下载APP
         </a>
       </li>
     </ul>

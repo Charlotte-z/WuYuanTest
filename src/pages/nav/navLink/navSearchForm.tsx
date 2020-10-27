@@ -4,7 +4,6 @@ import { connect } from 'umi';
 import { Input } from '@material-ui/core';
 
 const { Component } = React;
-
 class SearchForm extends Component {
   constructor(props: any) {
     super(props);
@@ -74,7 +73,7 @@ class SearchForm extends Component {
           </div>
         </div>
         <button onClick={this.stratSearch}>
-          <i className={styles.iconfont}>&#xe616;</i>
+          <i className="iconfont">&#xe616;</i>
         </button>
       </div>
     );

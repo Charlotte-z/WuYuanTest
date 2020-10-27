@@ -6,7 +6,7 @@ const navUser = () => {
     <div className={styles.navUser}>
       <div className={styles.searchMIN}>
         <a href="">
-          <i className={styles.iconfont}>&#xe616;</i>
+          <i className="iconfont">&#xe616;</i>
         </a>
       </div>
       <div className={styles.userImg}>
