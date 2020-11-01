@@ -6,6 +6,7 @@ import flower from '@public/img/flower.png';
 import grass from '@public/img/grass.png';
 import leaf from '@public/img/leaf.png';
 import React, { useEffect } from 'react';
+import { req } from '@/utils/request';
 
 export const NavBg = () => {
   /**
@@ -23,7 +24,9 @@ export const NavBg = () => {
         ele!.style!.marginLeft = `${currentWidth / 10 - 300}px`;
       });
   };
-
+  req('/yqhp/test').then(res => {
+    console.log(res);
+  })
   /**
    * @author 林间有风Lin
    * @version 1.0
@@ -121,10 +124,14 @@ export const NavBg = () => {
     };
   };
 
+  // req('/nav/post', {name:'alex', age:123}, 'POST', {}).then(res => {
+  //   console.log(res,'---------------');
+  // })
+  
   useEffect(move, []);
 
   return (
-    <div r-if={'awd'} className={styles.navBg}>
+    <div className={styles.navBg}>
       <img className={`${styles.girl} gl`} src={girl} />
       <img className={`${styles.hill} hl`} src={hill}></img>
       <img className={`${styles.leaf} lf`} src={leaf}></img>
