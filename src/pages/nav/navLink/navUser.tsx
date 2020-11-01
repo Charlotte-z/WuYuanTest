@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from '@/pages/nav/nav.less';
 
-const navUser = () => {
+const navUser = props => {
   return (
     <div className={styles.navUser}>
       <div className={styles.searchMIN}>

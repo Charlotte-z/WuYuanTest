@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '@/pages/content/contentHeader/contentNav.less';
+import styles from '@/pages/content/header/contentNav.less';
 const ContentNav = () => {
   return (
     <ul className={styles.contentNav}>

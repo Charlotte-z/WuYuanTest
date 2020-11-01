@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '@/pages/content/contentHeader/contentMoude.less';
+import styles from '@/pages/content/header/contentMoude.less';
 const ContentNav = () => {
   return (
     <ul className={styles.contentMoude}>

@@ -10,18 +10,31 @@ import { NavBg } from './nav';
 import NavLink from '@/pages/nav/navLink/navHeadr';
 import Content from '@/pages/content/index';
 import Suspense from '@/utils/asyncComponent';
+import { req } from '@/utils/request';
 
-const APP = () => (
-  // nav
-  <>
-    <Suspense delay={1300} middle>
-      <div className={`${styles.nav} nv`}>
-        <NavBg />
-        <NavLink />
-      </div>
-      <Content />
-    </Suspense>
-  </>
-);
+const config = {
+  url: 'http://localhost:8000/api/users',
+  'data-name': 'res',
+};
+
+const APP = props => {
+  return (
+    // nav
+    <>
+      <Suspense delay={1300} middle>
+        <div
+          onClick={() => {
+            test();
+          }}
+          className={`${styles.nav} nv`}
+        >
+          <NavBg />
+          <NavLink />
+        </div>
+        <Content />
+      </Suspense>
+    </>
+  );
+};
 
 export default APP;
