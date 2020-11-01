@@ -24,9 +24,6 @@ export const NavBg = () => {
         ele!.style!.marginLeft = `${currentWidth / 10 - 300}px`;
       });
   };
-  req('/yqhp/test').then(res => {
-    console.log(res);
-  })
   /**
    * @author 林间有风Lin
    * @version 1.0

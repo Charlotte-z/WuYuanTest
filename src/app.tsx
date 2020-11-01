@@ -1,7 +1,7 @@
 import { history } from 'umi';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import '@/utils/index';
+// import '@/utils/index';
 /**
  * @author 林间有风Lin
  * @version 1.0

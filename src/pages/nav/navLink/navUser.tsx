@@ -1,12 +1,12 @@
 import React from 'react';
 import styles from '@/pages/nav/nav.less';
 
-const navUser = () => {
+const navUser = props => {
   return (
     <div className={styles.navUser}>
       <div className={styles.searchMIN}>
         <a href="">
-          <i className={styles.iconfont}>&#xe616;</i>
+          <i className="iconfont">&#xe616;</i>
         </a>
       </div>
       <div className={styles.userImg}>
