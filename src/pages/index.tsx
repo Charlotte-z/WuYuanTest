@@ -1,37 +1,18 @@
 /**
  * @author 林间有风Lin
- * @date 2020/10/3
+ * @date 2020/11/11
  * @modify
  * @modifyDesc
  */
-import React, { useEffect } from 'react';
-import styles from './nav/nav.less';
-import { NavBg } from './nav';
-import NavLink from '@/pages/nav/navLink/navHeadr';
-import Content from '@/pages/content/index';
+import React from 'react';
 import Suspense from '@/utils/asyncComponent';
-import { req } from '@/utils/request';
+import ListItem from '@/pages/listItem/index'
 
-const config = {
-  url: 'http://localhost:8000/api/users',
-  'data-name': 'res',
-};
-
-const APP = props => {
+const APP = (props: object) => {
   return (
-    // nav
     <>
-      <Suspense delay={1300} middle>
-        <div
-          onClick={() => {
-            test();
-          }}
-          className={`${styles.nav} nv`}
-        >
-          <NavBg />
-          <NavLink />
-        </div>
-        <Content />
+      <Suspense delay={1200} middle>
+        <ListItem/>
       </Suspense>
     </>
   );

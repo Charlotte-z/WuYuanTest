@@ -1,33 +1,63 @@
 import { Effect, ImmerReducer, Reducer, Subscription } from 'umi';
 import {Send} from '@/services/sendReq'
+import { message } from 'antd'
 
-const IndexModel = {
+const l = window.localStorage.getItem('listData')
+const lData = l ? JSON.parse(l) : []
+
+
+const TableListModel = {
     namespace:'IndexModel',
     state:{
-        name:' 彪哥！',
-        age:123
+        listData: lData,
+        columns: [
+            {
+                title: '姓名',
+                dataIndex: 'name',
+                key: 'name',
+            }]
     },
     reducers:{ // 更新组件的state
-       update(state, action){        
+       add(state, action: any){    
+        const item = action.payload?.item ?? ''
+
+        if(item === '') {
+            message.warning('没有数据添加哦！ by author @林间有风Lin')
+            return {...state}
+        }
+
+        let data = JSON.parse(window.localStorage.getItem('listData') ?? "[]") // 上面不可复用，会导致state报错
+
+        const key = data?.[data.length - 1]?.key
+        
+        const obj = {
+            key: key ? key + 1 : 1,
+            name:item
+        }
+
+        data.push(obj)
+        window.localStorage.setItem('listData', JSON.stringify(data))
         return {
             ...state,
-            name:action.payload.a
+            listData:data
           }
+       },
+       delete(state: any, action: any){
+        const listData = action.payload.listData
+        window.localStorage.setItem('listData', JSON.stringify(listData ?? []))
+        return{
+            ...state,
+            listData
+        }
        }
     },
+
     effects:{
-        // call是调用异步函数的，put是调用同步函数
-        *sendReq(action, { put, call }){
-            const a = yield call(Send, action.payload)
-            yield put({
-                type:'update',
-                payload:{a}
-            })
-        }
+        
     }
 }
 
-export default IndexModel
+export default TableListModel
 
 
 

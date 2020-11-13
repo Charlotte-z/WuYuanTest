@@ -1,5 +1,4 @@
 import { defineConfig } from 'umi';
-import px2rem from 'postcss-px2rem';
 import path from 'path';
 
 export default defineConfig({
@@ -20,5 +19,4 @@ export default defineConfig({
     immer: true,
     hmr: true,
   },
-  extraPostCSSPlugins: [px2rem({ remUnit: 16 })],
 });
